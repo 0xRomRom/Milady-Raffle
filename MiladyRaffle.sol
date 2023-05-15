@@ -9,6 +9,7 @@ contract MiladyRaffle is Ownable {
     uint PLAYER_CAP;
     uint PLAYER_COUNT;
     uint ENTRY_CAP;
+    bool refund;
 
     mapping(address => uint) public participatoors;
     address[] public entrantsWallets;
@@ -20,11 +21,26 @@ contract MiladyRaffle is Ownable {
     }
 
     function enterRaffle(uint _ticketCount) public payable {
-        require(PLAYER_COUNT + _ticketCount <= PLAYER_CAP,"Cap potentially reached. If more than 1 ticket, try with fewer.");
-        require(msg.value >= _ticketCount * ENTRY_PRICE,"Not enough funds to pay for tickets.");
-        require(entrantsWallets.length + _ticketCount <= PLAYER_CAP,"Try with fewer tickets.");
-        require(_ticketCount <= ENTRY_CAP,"Cap reached, try with fewer tickets");
-        require(participatoors[msg.sender] <= 5, "Ticket cap reached");
+        require(
+            PLAYER_COUNT + _ticketCount <= PLAYER_CAP,
+            "Cap potentially reached. If more than 1 ticket, try with fewer."
+        );
+        require(
+            msg.value >= _ticketCount * ENTRY_PRICE,
+            "Not enough funds to pay for tickets."
+        );
+        require(
+            entrantsWallets.length + _ticketCount <= PLAYER_CAP,
+            "Try with fewer tickets."
+        );
+        require(
+            _ticketCount <= ENTRY_CAP,
+            "Cap reached, try with fewer tickets"
+        );
+        require(
+            participatoors[msg.sender] + _ticketCount <= ENTRY_CAP,
+            "Ticket cap reached"
+        );
 
         PLAYER_COUNT += _ticketCount;
         participatoors[msg.sender] += _ticketCount;
@@ -36,9 +52,26 @@ contract MiladyRaffle is Ownable {
 
     function payWinner() public payable onlyOwner {}
 
-    function emergancyRefundEntrants() public payable onlyOwner {}
+    function emergancyRefundEntrants() public onlyOwner {
+        refund = true;
+    }
 
-    function withdrawRaffleFunds() public payable onlyOwner {}
+    function withdrawRefund() public {
+        require(refund, "Refund is not available");
+        require(participatoors[msg.sender] > 0, "Nothing to withdraw");
+
+        uint ticketCount = participatoors[msg.sender];
+        uint refundAmount = ticketCount * ENTRY_PRICE;
+
+        participatoors[msg.sender] = 0;
+        payable(msg.sender).transfer(refundAmount);
+
+        require(participatoors[msg.sender] == 0, "Failed to withdraw");
+    }
+
+    function withdrawRaffleFunds() public payable onlyOwner {
+        payable(msg.sender).transfer(address(this).balance);
+    }
 
     receive() external payable {}
 }

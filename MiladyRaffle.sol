@@ -20,27 +20,16 @@ contract MiladyRaffle is Ownable {
     }
 
     function enterRaffle(uint _ticketCount) public payable {
-        require(
-            PLAYER_COUNT + _ticketCount <= PLAYER_CAP,
-            "Cap potentially reached. If more than 1 ticket, try with fewer."
-        );
-        require(
-            msg.value >= _ticketCount * ENTRY_PRICE,
-            "Not enough funds to pay for tickets."
-        );
-        require(
-            entrantsWallets.length + _ticketCount <= PLAYER_CAP,
-            "Try with fewer tickets."
-        );
-        require(
-            _ticketCount <= ENTRY_CAP,
-            "Cap reached, try with fewer tickets"
-        );
+        require(PLAYER_COUNT + _ticketCount <= PLAYER_CAP,"Cap potentially reached. If more than 1 ticket, try with fewer.");
+        require(msg.value >= _ticketCount * ENTRY_PRICE,"Not enough funds to pay for tickets.");
+        require(entrantsWallets.length + _ticketCount <= PLAYER_CAP,"Try with fewer tickets.");
+        require(_ticketCount <= ENTRY_CAP,"Cap reached, try with fewer tickets");
+        require(participatoors[msg.sender] <= 5, "Ticket cap reached");
 
         PLAYER_COUNT += _ticketCount;
         participatoors[msg.sender] += _ticketCount;
 
-        for (uint i = 1; i < _ticketCount; i++) {
+        for (uint i = 0; i < _ticketCount; i++) {
             entrantsWallets.push(msg.sender);
         }
     }

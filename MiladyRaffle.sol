@@ -6,12 +6,14 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
 import "https://github.com/smartcontractkit/chainlink/blob/develop/contracts/src/v0.8/vrf/VRFV2WrapperConsumerBase.sol";
 
 contract MiladyRaffle is Ownable, VRFV2WrapperConsumerBase {
-    uint ENTRY_PRICE;
-    uint PLAYER_CAP;
-    uint PLAYER_COUNT;
-    uint ENTRY_CAP;
-    bool refund;
-    address raffleWinner;
+    uint public ENTRY_PRICE;
+    uint public ENTRY_CAP;
+    uint public PLAYER_CAP;
+    uint public PLAYER_COUNT;
+    bool public refund;
+    address public raffleWinner;
+    uint[] public randomNum;
+    uint public requestID;
 
     mapping(address => uint) public participatoors;
     address[] public entrantsWallets;
@@ -34,7 +36,7 @@ contract MiladyRaffle is Ownable, VRFV2WrapperConsumerBase {
         ENTRY_CAP = 5;
     }
 
-    function requestRandomWords() private returns (uint256 requestId) {
+    function requestRandomWords() public onlyOwner returns (uint256 requestId) {
         requestId = requestRandomness(
             callbackGasLimit,
             requestConfirmations,
@@ -50,21 +52,20 @@ contract MiladyRaffle is Ownable, VRFV2WrapperConsumerBase {
         uint256[] memory _randomWords
     ) internal override {
         require(requestPaid > 0, "request not found");
-        require(PLAYER_COUNT > 300, "Not enough players");
-
-        requestPaid = 0;
 
         //Store function param (unused)
-        uint reqID = _requestId;
+        requestID = _requestId;
+        randomNum = _randomWords;
 
         // Winner info
-        uint winnerIndex;
+        uint finalWinner;
 
         // Winner index and address
-        winnerIndex = _randomWords[0];
-        raffleWinner = entrantsWallets[winnerIndex];
 
-        requestPaid = 0;
+        finalWinner = randomNum[0] % PLAYER_COUNT;
+        raffleWinner = entrantsWallets[finalWinner];
+
+        withdrawRaffleFunds();
     }
 
     function enterRaffle(uint _ticketCount) public payable {
@@ -97,10 +98,12 @@ contract MiladyRaffle is Ownable, VRFV2WrapperConsumerBase {
         }
     }
 
-    function payWinner() public payable onlyOwner {}
+    function pickWinner() public payable onlyOwner {
+        requestRandomWords();
+    }
 
     function emergancyRefundEntrants() public onlyOwner {
-        refund = true;
+        refund = !refund;
     }
 
     function withdrawRefund() public {

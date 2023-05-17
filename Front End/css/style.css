@@ -308,3 +308,24 @@ a {
 .white {
   color: white !important;
 }
+
+.fallback {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none !important;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 4vw;
+  z-index: 100;
+  background-color: black;
+}
+
+@media (max-width: 800px) {
+  .fallback {
+    display: flex !important;
+  }
+}

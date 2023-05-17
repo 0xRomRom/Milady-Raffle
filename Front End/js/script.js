@@ -29,7 +29,6 @@ let account;
 const CONTRACT = "0x51472D557e9Ee00D7E51d0c12dd2131EC29d6bbE";
 window.web3 = new Web3(window.ethereum);
 let contractInstance = new web3.eth.Contract(ABI, CONTRACT);
-console.log(contractInstance);
 let mintCounter = 0;
 const ethMintWeiPrice = +BigInt("10000000000000000").toString().slice(0);
 

@@ -20,6 +20,7 @@ contract VRFv2DirectFundingConsumer is
     VRFV2WrapperConsumerBase,
     ConfirmedOwner
 {
+    uint[] public WINNER;
     event RequestSent(uint256 requestId, uint32 numWords);
     event RequestFulfilled(
         uint256 requestId,
@@ -64,12 +65,6 @@ contract VRFv2DirectFundingConsumer is
         VRFV2WrapperConsumerBase(linkAddress, wrapperAddress)
     {}
 
-    function quickMaths() public pure returns (uint) {
-        RequestStatus memory request;
-        uint randomNumber = request.randomWords[0];
-        return randomNumber % 3;
-    }
-
     function requestRandomWords()
         external
         onlyOwner
@@ -103,6 +98,10 @@ contract VRFv2DirectFundingConsumer is
             _randomWords,
             s_requests[_requestId].paid
         );
+    }
+
+    function RANDOM(uint _reqID) public view returns (uint) {
+        return s_requests[_reqID].randomWords[0] % 20;
     }
 
     function getRequestStatus(

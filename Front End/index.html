@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schizo Raffle</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <script type="module" src="./js/script.js"></script>
+    <script type="module" src="./js/ABI.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.2.3/ethers.umd.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="/img/Milady-mini.png" />
+  </head>
+  <body>
+    <div class="app">
+      <div class="modal">
+        <div class="modal-inner-wrap">
+          <div class="meta-signup-modal">
+            <button class="connect-meta">
+              <img src="./img/Milady-mini.png" class="mini-lady" /> Connect to
+              Metamask <img src="./img/Milady-mini.png" class="mini-lady2" />
+            </button>
+          </div>
+          <div class="enter-raffle-modal hidden">
+            <h3 class="raffle-welcome"></h3>
+
+            <div class="enter-raffle-box">
+              <span class="raffle-price">1 Ticket = 0.01 ETH</span>
+              <div class="raffle-buttons">
+                <button class="dec btn-stl">
+                  <img src="./img/Milady-mini.png" class="mil-btn" />
+                </button>
+                <span class="mint-count">0</span>
+                <button class="inc btn-stl">
+                  <img src="./img/Milady-mini.png" class="mil-btn" />
+                </button>
+              </div>
+              <div class="enter-raffle-btnbox">
+                <button class="enter-raffle">Enter milady</button>
+              </div>
+              <div class="entrants-box">
+                <span class="entrants-hero">F.A.Q.</span>
+                <div class="entrants-list">
+                  <span>Entry limit? 5 per wallet</span>
+                  <span>Where will winner be announced? <a href="https://twitter.com/huey_nibiru" class="purple-span"
+                    >cyberking.eth</a
+                  ></span
+                ></span>
+                  <span>How will winner be picked? Chainlink VRF</span>
+                  <span>Questions? Ask me here: <a href="https://twitter.com/huey_nibiru" class="purple-span"
+                    >cyberking.eth</a
+                  ></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <span class="entered-count"></span>
+      </div>
+
+      <div class="bg-cont">
+        <h1 class="hero-title">SchizoPoster #640 Raffle</h1>
+        <div class="images-bg">
+          <img src="./img/schizo.avif" class="schizo-bg" />
+          <img src="./img/schizo.avif" class="schizo-bg2" />
+        </div>
+        <div class="circle"></div>
+      </div>
+      <span class="cyberking"
+        >By
+        <a href="https://twitter.com/huey_nibiru" class="purple-span"
+          >cyberking.eth</a
+        ></span
+      >
+    </div>
+  </body>
+</html>

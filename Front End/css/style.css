@@ -1,0 +1,310 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.app {
+  position: relative;
+  width: 100vw;
+  height: 60rem;
+  background-color: rgb(3, 4, 13);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.bg-cont {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  width: 30rem;
+  height: 30rem;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.344);
+  filter: blur(10rem);
+}
+
+.images-bg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 1rem;
+}
+
+.schizo-bg {
+  position: relative;
+  width: 25vw;
+  border-radius: 3rem;
+  filter: blur(0.2rem);
+}
+.schizo-bg2 {
+  position: relative;
+  width: 25rem;
+  width: 25vw;
+  border-radius: 3rem;
+  filter: blur(0.2rem);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.hero-title {
+  font-family: "Montserrat", sans-serif;
+  color: rgb(214, 206, 206);
+  text-align: center;
+  z-index: 5;
+  position: absolute;
+  top: 2rem;
+}
+
+.modal {
+  position: absolute;
+  width: 25rem;
+  height: 35rem;
+  background-color: red;
+  background: radial-gradient(#ff69b4, #d02090, #c71585);
+  z-index: 10;
+  border-radius: 1rem;
+}
+
+.cyberking {
+  font-family: "Montserrat", sans-serif;
+  color: rgb(214, 206, 206);
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  font-size: 16px;
+  z-index: 20;
+}
+
+.entered-count {
+  font-family: "Montserrat", sans-serif;
+  color: rgb(214, 206, 206);
+  position: absolute;
+  bottom: 10px;
+  text-align: center;
+  font-size: 16px;
+  z-index: 20;
+  width: 100%;
+}
+
+.modal-inner-wrap {
+  position: relative;
+  width: 100%;
+  height: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.meta-signup-modal {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.enter-raffle-modal {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 0.7rem;
+}
+
+.connect-meta {
+  width: 14rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 17px;
+  border-radius: 0.4rem;
+  border: 0;
+  cursor: pointer;
+}
+.connect-meta:hover {
+  box-shadow: 0px 0px 15px purple;
+}
+
+.mini-lady {
+  position: relative;
+  width: 1.5rem;
+}
+.mini-lady2 {
+  position: relative;
+  width: 1.5rem;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.raffle-welcome {
+  text-align: center;
+  font-size: 17px;
+  font-family: "Montserrat", sans-serif;
+}
+.addy {
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+  color: blue;
+}
+
+.enter-raffle-box {
+  position: relative;
+  width: 70%;
+  margin-top: 4rem;
+  height: 20rem;
+  border-radius: 0.6rem;
+  background-color: rgba(0, 0, 255, 0.123);
+  /* border: 2px solid purple; */
+  box-shadow: -5px -5px 30px purple;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-top: 0.3rem;
+}
+
+.raffle-price {
+  position: relative;
+  top: 1rem;
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+.raffle-buttons {
+  position: relative;
+  width: 100%;
+  height: 3rem;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.btn-stl {
+  position: relative;
+  background-image: url("../img/Milady-mini.png");
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.mil-btn {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dec {
+  background-color: red;
+}
+
+.inc {
+  background-color: green;
+}
+
+.enter-raffle-btnbox {
+  position: relative;
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.75rem;
+}
+
+.enter-raffle {
+  position: relative;
+  width: 8rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.539);
+  transition: all 0.3s ease-in-out;
+}
+.enter-raffle:hover {
+  background-color: black;
+  color: white;
+}
+
+.entrants-box {
+  position: relative;
+  width: 100%;
+  margin-top: 1rem;
+  height: 6rem;
+  overflow-y: scroll;
+}
+
+.entrants-hero {
+  position: relative;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  background-color: black;
+  display: block;
+  color: white;
+  margin-bottom: 0.2rem;
+  border-radius: 0.2rem;
+  width: 95%;
+  left: 2.5%;
+}
+
+.entrants-list {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 10px;
+
+  font-size: 12px;
+}
+
+.entrants-list span {
+  text-align: center;
+  display: block;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+}
+
+.white {
+  color: white !important;
+}
